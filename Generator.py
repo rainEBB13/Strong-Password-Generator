@@ -2,6 +2,8 @@ import os
 import secrets
 import string
 
+#--------------------------------------------------------------------------#
+#Função feita para criar uma senha:
 def creating_a_password(alphabet, numbers, simbols):
     password = ""
     for i in range(16):
@@ -16,6 +18,21 @@ def creating_a_password(alphabet, numbers, simbols):
             password += random_generator.choice(simbols)
         
     return password
+#--------------------------------------------------------------------------#
+#Função feita para conferir se a senha é forte segundo as características de senhas fortes:
+def confering_strong_password(password, alphabet, numbers, simbols):
+    ok = False
+    if (any(alphabet for k in password)
+            and any(numbers for k in password)
+            and any(simbols for k in password)):
+        ok = True
+    
+    if ok:
+        return password
+
+    password = creating_a_password(alphabet, numbers, simbols)
+#--------------------------------------------------------------------------#
+#FUNÇÃO PRINCIPAL:
 
 #Criando uma instância (objeto) para a classe SystemRandom 
 random_generator = secrets.SystemRandom()
@@ -32,12 +49,8 @@ simbols = string.punctuation
 password = creating_a_password(alphabet, numbers, simbols)
 
 #Conferindo se a senha criada é uma senha FORTE.
-while True:
-    if (any(alphabet for k in password)
-            and any(numbers for k in password)
-            and any(simbols for k in password)):
-        break
+password_confered = confering_strong_password(password, alphabet, numbers, simbols)
 
-    password = creating_a_password(alphabet, numbers, simbols)
 
-print(password)
+
+print(password_confered)
