@@ -4,9 +4,10 @@ import string
 
 #--------------------------------------------------------------------------#
 #Função feita para criar uma senha Forte:
-def creating_a_password():
+def creating_a_password(size_of_strength_password):
     password = ""
-    for i in range(16):
+ 
+    for i in range(size_of_strength_password):
         #Alphabet = 0, Numbers = 1, Simbols = 2.
         random_temporary_number = random_generator.randrange(3)
 
@@ -20,7 +21,7 @@ def creating_a_password():
     return password
 #--------------------------------------------------------------------------#
 #Função feita para conferir se a senha é forte segundo as características de senhas fortes:
-def confering_strong_password(password):
+def confering_strong_password(password, size_of_strength_password):
     #CARACTERÍSTICAS DE SENHAS FORTES:
     # - 12 a 16 caracteres.
     # - Letras maiúsculas (ABCD).
@@ -72,7 +73,7 @@ def confering_strong_password(password):
         if ok1 and ok2:
             break
 
-        password = creating_a_password()
+        password = creating_a_password(size_of_strength_password)
 
     return password
 #--------------------------------------------------------------------------#
@@ -211,10 +212,18 @@ while (not entrada_valida):
                 print("Nível 4: Forte")
         case 2:
             entrada_valida = True
+            #Tamanho de entrada desejado pelo usuário:
+            size_of_strength_password = int(input("Qual tamanho você deseja (Obrigatório 16+ caracteres)? "))
+            while True:
+                if size_of_strength_password >= 16:
+                    break
+                else:
+                    print("Entrada inválida. A senha deve conter 16 ou mais caracteres!")
+                    size_of_strength_password = int(input("Digite um tamanho válido: "))
             # Criando a senha:
-            password = creating_a_password()
+            password = creating_a_password(size_of_strength_password)
             # Conferindo se é forte. Se não for, faz uma senha forte:
-            password_confered = confering_strong_password(password)
+            password_confered = confering_strong_password(password, size_of_strength_password)
             print("A senha forte criada é: {0}".format(password_confered))
         case _:
             entrada_valida = True
