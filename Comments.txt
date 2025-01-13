@@ -49,4 +49,3 @@ The translation of the comments to english (in order):
 # Creating a password.
 # Creating a encrypt key.
 # Encrypting with the key created.
-#  

@@ -306,3 +306,5 @@ while (not entrada_valida):
             print("English: Invalid input. Please, digit 1, 2, 3 or 4 for a valid input.")
             user_input = int(input("Qual entrada você deseja(1/2/3/4) ? (What option you wish(1/2/3/4) ?) "))
 
+#--------------------------------------------------------------------------#
+
