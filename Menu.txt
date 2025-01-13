@@ -4,6 +4,7 @@ Português:
     2. Gerar uma senha forte aleatória.
     3. Gerar uma senha forte criptografada.
     4. Descriptografar uma senha.
+    5. Criptografar uma senha com uma chave específica.
 
 English:
 # MENU FOR THE PROJECT "STRONG-PASSWORD-GENERATOR":
@@ -11,3 +12,4 @@ English:
     2. Generate a random strong password.
     3. Generate an encrypt strong password.
     4. Decrypt a password.
+    5. Encryp a password with a especific key.

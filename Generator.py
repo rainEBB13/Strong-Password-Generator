@@ -84,7 +84,7 @@ def confering_the_strength(password):
         # Nível 1) Fraca: Menos de 8 caracteres, apenas letras minúsculas e números.
         # Nível 2) Moderada: 8 a 10 caracteres, combina pelo menos 2 tipos de caracteres.
         # Nível 3) Semi-Forte: 10 a 12 caracteres, inclui letras maiúsculas, minúsculas, números e simbolos.
-        # Nível 4) Forte: 12 a 16 caracteres, distribuição aleatória e equilibrada de todos os tipos de caracteres.
+        # Nível 4) Forte: Mais de 16 caracteres, distribuição aleatória e equilibrada de todos os tipos de caracteres.
     # Equilíbrio do Nível 4: Distribuição de 10% a 40% de cada um dos 4 tipos de caracteres(maiúsculas, minúsculas, números e simbolos)
     # Para veredito final será considerado um compilado das características acima mencionadas.
 
@@ -205,6 +205,7 @@ print("    1. Conferir a força de uma senha qualquer.")
 print("    2. Gerar uma senha forte aleatória.")
 print("    3. Gerar uma senha forte criptografada.")
 print("    4. Descriptografar uma senha.")
+print("    5. Criptografar uma senha com uma chave específica.")
 print()
 print()
 print("English:")
@@ -213,6 +214,7 @@ print("    1. Check the strength of any password.")
 print("    2. Generate a random strong password.")
 print("    3. Generate an encrypt strong password.")
 print("    4. Decrypt a password.")
+print("    5. Encryp a password with a especific key.")
 print("#----------------------------------------------------#")
 print()
 
@@ -223,7 +225,7 @@ alphabet = string.ascii_letters
 numbers = string.digits
 simbols = string.punctuation
 
-user_input = int(input("Qual entrada você deseja(1/2/3/4) ? (What option you wish(1/2/3/4) ?) "))
+user_input = int(input("Qual entrada você deseja(1/2/3/4/5) ? [What option you wish(1/2/3/4/5) ?] "))
 
 entrada_valida = False
 count = 0
@@ -231,7 +233,7 @@ while (not entrada_valida):
     match user_input:
         case 1:
             entrada_valida = True
-            senha_do_usuario = input("Digite a senha(Digit a password): ")
+            senha_do_usuario = input("Digite a senha(Digit the password): ")
             password_strength = confering_the_strength(senha_do_usuario)
             if password_strength == 1:
                 print("Nível 1: Fraca(Weak)\n")
@@ -244,9 +246,10 @@ while (not entrada_valida):
         case 2:
             entrada_valida = True
             #Tamanho de entrada desejado pelo usuário:
+            print()
             print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
             print("English: What size you wish (Obrigatory 16 characters or more)? ")
-            size_of_strength_password = int(input())
+            size_of_strength_password = int(input("R = "))
             while True:
                 if size_of_strength_password >= 16:
                     break
@@ -261,10 +264,11 @@ while (not entrada_valida):
             print("A senha forte criada é(The strength password created is): {0}".format(password_confered))
         case 3:
             entrada_valida = True
-            #Tamnho de entrada desejado pelo usuário:
+            #Tamanho de entrada desejado pelo usuário:
+            print()
             print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
             print("English: What size you wish (Obrigatory 16 characters or more)? ")
-            size_of_strength_password = int(input())
+            size_of_strength_password = int(input("R = "))
             while True:
                 if size_of_strength_password >= 16:
                     break
@@ -285,10 +289,18 @@ while (not entrada_valida):
             print("Senha criptografada (encrypt password): {}".format(encrypt_password))
         case 4:
             entrada_valida = True
+            print()
             password = input("Por favor, digite a senha criptografada(Please, digit the encrypt password): ")
             key = input("Por favor, digite a chave de criptografia dentro de b' ' (Please, digit the encrypt key inside of b' '): ")
             decrypt_password = decrypt(password, key)
+            print()
             print("Password: {0}".format(decrypt_password))
+        case 5:
+            entrada_valida = True
+            password = input("Por favor, digite a senha (Please, digit the password): ")
+            key = input("Por favor, digite a chave de criptografia dentro de b' ' (Please, digit the encrypt key inside of b' '): ")
+            encrypt_password = encrypt(password, key)
+            print("Encrypt password: {0}".format(encrypt_password))
         case _:
             print("Português: Entrada inválida. Por favor, digite 1, 2, 3 ou 4 para a entrada ser válida.")
             print("English: Invalid input. Please, digit 1, 2, 3 or 4 for a valid input.")

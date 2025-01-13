@@ -1,0 +1,52 @@
+The translation of the comments to english (in order):
+# Function created to create a strength password.
+# #Alphabet = 0, Numbers = 1, Simbols = 2.
+# Function created to check if the password is strong according to the features of strong passwords.
+# FEATURES OF STRONG PASSWORDS.
+# - 12 a 16 characters.
+# - Upper letters (ABCD).
+# - Lower letters (abcd).
+# - Numbers (0-9).
+# - Special characters (!@#$%^&*, etc.).
+# - Balance in the distribution of character types.
+# Checking the balance in the distribution of character types (10% to 40% of each of the 4 types).
+# 4 types: upper, lower, numbers, simbols.
+# Limits to be a strong password.
+# Function created to check what is the strength of a password.
+# Passwords are divided in 4 levels: Weak, Moderate, Semi-Strength, Strength.
+# Level 1) Weak: Less than 8 characters, only lower letters and numbers.
+# Level 2) Moderate: 8 to 10 characters, combine 2 types of characters or more.
+# Level 3) Semi-Strength: 10 to 12 characters, included lower letters, upper letters, numbers and simbols.
+# Level 4) Strength: More than 12 characters, aleatory distribution and balanced of the types of characters.
+# Balance of the level 4: Distribution 10% to 40% of each of the 4 types of characters(lower letters, upper letters, numbers and simbols).
+# For a final answer, all of this features will be considerated.
+# Limits to be a strong password.
+# Level 1.
+# Level 1 (created only with 1 type of character, despite of its size).
+# Level 2 (created with 8 to 10 characters, Regardless of the variety of character types).
+# Level 1 (created only with 1 type of character, despite of its size).
+# Level 3 (all of the features: size and types of characters).
+# Level 2 (doesn't has all of the features for level 3 and has a good size to level 2).
+# Level 1 (created only with 1 type of character, despite of its size).
+# Checking if exists a balance in the distribution of the types of characters.
+# Level 4.
+# Level 3. Doesn't exists balance, but because of the size of the password and the types of characters is the features for level 3.
+# Level 2, has a good size, but doesn't has all of the types of characters.
+# Function created to generate a key for the encrypt.
+# Function created to encrypt a password.
+# Converting the 2 arguments of the function into Bytes for the encrypt.
+# Converting back to a string.
+# Function created to decrypt a password.
+# Converting the 2 arguments of the function into Bytes for the decrypt.
+# Converting back to a string.
+# MAIN FUNCTION.
+# MENU.
+# Creating a instance (object) for the SystemRandom class.
+# Size of the input wished the user.
+# Creating a password.
+# Checking if the password is strong. If not, create a strong password with this function.
+# Size of the input wished the user.
+# Creating a password.
+# Creating a encrypt key.
+# Encrypting with the key created.
+#  
