@@ -3,9 +3,11 @@ Português:
     1. Conferir a força de uma senha qualquer.
     2. Gerar uma senha forte aleatória.
     3. Gerar uma senha forte criptografada.
+    4. Descriptografar uma senha.
 
 English:
 # MENU FOR THE PROJECT "STRONG-PASSWORD-GENERATOR":
     1. Check the strength of any password.
     2. Generate a random strong password.
     3. Generate an encrypt strong password.
+    4. Decrypt a password.

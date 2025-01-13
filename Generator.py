@@ -1,6 +1,7 @@
 import os
 import secrets
 import string
+from cryptography.fernet import Fernet
 
 #--------------------------------------------------------------------------#
 #Função feita para criar uma senha Forte:
@@ -167,6 +168,33 @@ def confering_the_strength(password):
             #Nível 2, tem um tamanho bom, porém não tem todos os tipos de caracteres.
             return 2
 #--------------------------------------------------------------------------#
+#Função feita para gerar uma chave de criptografia:
+def create_key():
+    key = Fernet.generate_key()
+    return key
+#--------------------------------------------------------------------------#
+#Função feita para criptografar uma senha
+def encrypt(password, key):
+    #Convertendo os 2 argumentos em Bytes para a criptografia
+    password = password.encode()
+
+    encrypt_password = Fernet(key).encrypt(password)
+
+    #Convertendo novamente para uma string
+    encrypt_password = encrypt_password.decode()
+    return encrypt_password
+#--------------------------------------------------------------------------#
+#Função feita para descriptografar uma senha
+def decrypt(password, key):
+    #Convertendo os 2 argumentos em Bytes para a descriptografia
+    password = password.encode()
+
+    decrypt_password = Fernet(key).decrypt(password)
+
+    #Convertendo novamente para uma string
+    decrypt_password = decrypt_password.decode()
+    return decrypt_password
+#--------------------------------------------------------------------------#
 #FUNÇÃO PRINCIPAL:
 
 #MENU:
@@ -176,6 +204,7 @@ print('# MENU DO PROJETO "STRONG-PASSWORD-GENERATOR":"')
 print("    1. Conferir a força de uma senha qualquer.")
 print("    2. Gerar uma senha forte aleatória.")
 print("    3. Gerar uma senha forte criptografada.")
+print("    4. Descriptografar uma senha.")
 print()
 print()
 print("English:")
@@ -183,6 +212,7 @@ print('# MENU FOR THE PROJECT "STRONG-PASSWORD-GENERATOR":')
 print("    1. Check the strength of any password.")
 print("    2. Generate a random strong password.")
 print("    3. Generate an encrypt strong password.")
+print("    4. Decrypt a password.")
 print("#----------------------------------------------------#")
 print()
 
@@ -193,7 +223,7 @@ alphabet = string.ascii_letters
 numbers = string.digits
 simbols = string.punctuation
 
-user_input = int(input("Qual entrada você deseja (1/2/3)? "))
+user_input = int(input("Qual entrada você deseja (1/2/3/4)? "))
 
 entrada_valida = False
 while (not entrada_valida):
@@ -203,13 +233,13 @@ while (not entrada_valida):
             senha_do_usuario = input("Digite a senha: ")
             password_strength = confering_the_strength(senha_do_usuario)
             if password_strength == 1:
-                print("Nível 1: Fraca\n")
+                print("Nível 1: Fraca(Weak)\n")
             elif password_strength == 2:
-                print("Nível 2: Moderada\n")
+                print("Nível 2: Moderada(Moderate)\n")
             elif password_strength == 3:
-                print("Nível 3: Semi-Forte\n")
+                print("Nível 3: Semi-Forte(Semi-Strength)\n")
             elif password_strength == 4:
-                print("Nível 4: Forte")
+                print("Nível 4: Forte(Strength)")
         case 2:
             entrada_valida = True
             #Tamanho de entrada desejado pelo usuário:
@@ -225,6 +255,33 @@ while (not entrada_valida):
             # Conferindo se é forte. Se não for, faz uma senha forte:
             password_confered = confering_strong_password(password, size_of_strength_password)
             print("A senha forte criada é: {0}".format(password_confered))
+        case 3:
+            entrada_valida = True
+            #Tamnho de entrada desejado pelo usuário:
+            size_of_strength_password = int(input("Qual tamanho você deseja (Obrigatório 16+ caracteres)? "))
+            while True:
+                if size_of_strength_password >= 16:
+                    break
+                else:
+                    print("Entrada inválida. A senha deve conter 16 ou mais caracteres!")
+                    size_of_strength_password = int(input("Digite um tamanho válido: "))
+            # Criando a senha:
+            password = creating_a_password(size_of_strength_password)
+            #Criando uma chave da criptografia:
+            key = create_key()
+            print()
+            print("Português: Atenção, a chave de criptografia usada é de extrema importância. Guarde-a com todo o cuidado possível!")
+            print("English: Attention, the encryption key used is extremely important. Keep it with the utmost care!\n")
+            print("Key: {0}".format(key))
+            #Criptografando com chave criada:
+            encrypt_password = encrypt(password, key)
+            print("Senha criptografada (encrypt password): {}".format(encrypt_password))
+        case 4:
+            entrada_valida = True
+            password = input("Por favor, digite a senha criptografada(Please, digit the encrypt password): ")
+            key = input("Por favor, digite a chave de criptografia dentro de b' ' (Please, digit the encrypt key inside of b' '): ")
+            decrypt_password = decrypt(password, key)
+            print("Password: {0}".format(decrypt_password))
         case _:
             entrada_valida = True
             print("Entrada inválida. Por favor, digite 1, 2 ou 3 para a entrada ser válida.")
