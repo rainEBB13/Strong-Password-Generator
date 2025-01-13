@@ -223,14 +223,15 @@ alphabet = string.ascii_letters
 numbers = string.digits
 simbols = string.punctuation
 
-user_input = int(input("Qual entrada você deseja (1/2/3/4)? "))
+user_input = int(input("Qual entrada você deseja(1/2/3/4) ? (What option you wish(1/2/3/4) ?) "))
 
 entrada_valida = False
+count = 0
 while (not entrada_valida):
     match user_input:
         case 1:
             entrada_valida = True
-            senha_do_usuario = input("Digite a senha: ")
+            senha_do_usuario = input("Digite a senha(Digit a password): ")
             password_strength = confering_the_strength(senha_do_usuario)
             if password_strength == 1:
                 print("Nível 1: Fraca(Weak)\n")
@@ -243,28 +244,34 @@ while (not entrada_valida):
         case 2:
             entrada_valida = True
             #Tamanho de entrada desejado pelo usuário:
-            size_of_strength_password = int(input("Qual tamanho você deseja (Obrigatório 16+ caracteres)? "))
+            print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
+            print("English: What size you wish (Obrigatory 16 characters or more)? ")
+            size_of_strength_password = int(input())
             while True:
                 if size_of_strength_password >= 16:
                     break
                 else:
-                    print("Entrada inválida. A senha deve conter 16 ou mais caracteres!")
-                    size_of_strength_password = int(input("Digite um tamanho válido: "))
+                    print("Português: Entrada inválida. A senha deve conter 16 ou mais caracteres!")
+                    print("English: Invalid input. The password must contain 16 characters or more")
+                    size_of_strength_password = int(input("Digite um tamanho válido(Digit a valid size): "))
             # Criando a senha:
             password = creating_a_password(size_of_strength_password)
             # Conferindo se é forte. Se não for, faz uma senha forte:
             password_confered = confering_strong_password(password, size_of_strength_password)
-            print("A senha forte criada é: {0}".format(password_confered))
+            print("A senha forte criada é(The strength password created is): {0}".format(password_confered))
         case 3:
             entrada_valida = True
             #Tamnho de entrada desejado pelo usuário:
-            size_of_strength_password = int(input("Qual tamanho você deseja (Obrigatório 16+ caracteres)? "))
+            print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
+            print("English: What size you wish (Obrigatory 16 characters or more)? ")
+            size_of_strength_password = int(input())
             while True:
                 if size_of_strength_password >= 16:
                     break
                 else:
-                    print("Entrada inválida. A senha deve conter 16 ou mais caracteres!")
-                    size_of_strength_password = int(input("Digite um tamanho válido: "))
+                    print("Português: Entrada inválida. A senha deve conter 16 ou mais caracteres!")
+                    print("English: Invalid input. The password must contain 16 characters or more")
+                    size_of_strength_password = int(input("Digite um tamanho válido(Digit a valid size): "))
             # Criando a senha:
             password = creating_a_password(size_of_strength_password)
             #Criando uma chave da criptografia:
@@ -283,6 +290,7 @@ while (not entrada_valida):
             decrypt_password = decrypt(password, key)
             print("Password: {0}".format(decrypt_password))
         case _:
-            entrada_valida = True
-            print("Entrada inválida. Por favor, digite 1, 2 ou 3 para a entrada ser válida.")
+            print("Português: Entrada inválida. Por favor, digite 1, 2, 3 ou 4 para a entrada ser válida.")
+            print("English: Invalid input. Please, digit 1, 2, 3 or 4 for a valid input.")
+            user_input = int(input("Qual entrada você deseja(1/2/3/4) ? (What option you wish(1/2/3/4) ?) "))
 
