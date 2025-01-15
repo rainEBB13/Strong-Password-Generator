@@ -5,6 +5,6 @@ I would love your feedback and suggestions to enhance my project and make it eve
 
 ### Here’s how you can contribute:
 - Open an Issue to discuss your ideas.
-- end me a Pull Request with improved code or new ideas.
+- Send me a Pull Request with improved code or new ideas.
 
 Thanks!
