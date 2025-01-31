@@ -198,74 +198,139 @@ while not entrada_valida:
     match user_input:
         case 1:
             entrada_valida = True
-            senha_do_usuario = input("Digite a senha (Digit the password): ")
+            if language == 1:
+                senha_do_usuario = input("Digite a senha: ")
+            if language == 2:
+                senha_do_usuario = input("Digit the password: ")
             password_strength = confering_the_strength(senha_do_usuario)
             if password_strength == 1:
-                print("Nível 1: Fraca (Weak)\n")
+                if language == 1:
+                    print("Nível 1: Fraca\n")
+                if language == 2:
+                    #Level 1: Weak\n
+                    print("Level 1: Weak\n")
             elif password_strength == 2:
-                print("Nível 2: Moderada (Moderate)\n")
+                if language == 1:
+                    print("Nível 2: Moderada\n")    
+                if language == 2:
+                    print("Level 2: Moderate\n")
             elif password_strength == 3:
-                print("Nível 3: Semi-Forte (Semi-Strong)\n")
+                if language == 1:
+                    print("Nível 3: Semi-Forte\n")
+                if language == 2:
+                    print("Level 3: Semi-Strong\n")
             elif password_strength == 4:
-                print("Nível 4: Forte (Strong)\n")
+                if language == 1:
+                    print("Nível 4: Forte\n")
+                if language == 2:
+                    print("Level 4: Strong\n")
         case 2:
             entrada_valida = True
             print()
-            print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
-            print("English: What size you wish (Mandatory 16 characters or more)? ")
+            if language == 1:
+                print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
+            if language == 2:
+                print("English: What size you wish (Mandatory 16 characters or more)? ")
             size_of_strength_password = int(input("R = "))
             while size_of_strength_password < 16:
-                print("Português: Entrada inválida. A senha deve conter 16 ou mais caracteres!")
-                print("English: Invalid input. The password must contain 16 characters or more!")
-                size_of_strength_password = int(input("Digite um tamanho válido (Digit a valid size): "))
+                if language == 1:
+                    print("Português: Entrada inválida. A senha deve conter 16 ou mais caracteres!")
+                    size_of_strength_password = int(input("Digite um tamanho válido: "))
+                if language == 2:
+                    print("English: Invalid input. The password must contain 16 characters or more!")
+                    size_of_strength_password = int(input("Digit a valid size: "))
             password = creating_a_password(size_of_strength_password)
             password_confered = confering_strong_password(password, size_of_strength_password)
-            print("A senha forte criada é (The strong password created is): {0}".format(password_confered))
-            save_option = input("Do you want to save the password to a file? (yes/no): ").strip().lower()
-            if save_option == 'yes':
+            if language == 1:
+                print("A senha forte criada é: {0}".format(password_confered))
+                save_option = input("Você deseja salvar essa senha em um arquivo? (sim/nao): ").strip().lower()
+            if language == 2:
+                print("The strong password created is: {0}".format(password_confered))
+                save_option = input("Do you want to save the password to a file? (yes/no): ").strip().lower()
+            if save_option == 'yes' or save_option == 'sim':
                 save_password_to_file(password_confered)
-                print("Password has been saved to file.")
+                if language == 1:
+                    print("Sua senha foi salva em um arquivo.")
+                if language == 2:
+                    print("Password has been saved to file.")
         case 3:
             entrada_valida = True
             print()
-            print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
-            print("English: What size you wish (Mandatory 16 characters or more)? ")
+            if language == 1:
+                print("Português: Qual tamanho você deseja (Obrigatório 16+ caracteres)? ")
+            if language == 2:
+                print("English: What size you wish (Mandatory 16 characters or more)? ")
             size_of_strength_password = int(input("R = "))
             while size_of_strength_password < 16:
-                print("Português: Entrada inválida. A senha deve conter 16 ou mais caracteres!")
-                print("English: Invalid input. The password must contain 16 characters or more!")
-                size_of_strength_password = int(input("Digite um tamanho válido (Digit a valid size): "))
+                if language == 1:
+                    print("Português: Entrada inválida. A senha deve conter 16 ou mais caracteres!")
+                    size_of_strength_password = int(input("Digite um tamanho válido: "))
+                if language == 2:
+                    print("English: Invalid input. The password must contain 16 characters or more!")
+                    size_of_strength_password = int(input("Digit a valid size: "))
             password = creating_a_password(size_of_strength_password)
             key = create_key()
             print()
-            print("Português: Atenção, a chave de criptografia usada é de extrema importância. Guarde-a com todo o cuidado possível!")
-            print("English: Attention, the encryption key used is extremely important. Keep it with the utmost care!\n")
+            if language == 1:
+                print("Português: Atenção, a chave de criptografia usada é de extrema importância. Guarde-a com todo o cuidado possível!")
+            if language == 2:
+                print("English: Attention, the encryption key used is extremely important. Keep it with the utmost care!\n")
             print("Key: {0}".format(key))
             encrypt_password = encrypt(password, key)
-            print("Senha criptografada (Encrypted password): {0}".format(encrypt_password))
-            save_option = input("Do you want to save the encrypted password to a file? (yes/no): ").strip().lower()
-            if save_option == 'yes':
-                save_password_to_file(encrypt_password)
-                print("Encrypted password has been saved to file.")
+            if language == 1:
+                print("Senha criptografada: {0}".format(encrypt_password))
+                save_option = input("Você deseja salvar essa senha em um arquivo? (sim/nao): ").strip().lower()
+            if language == 2:
+                print("Encrypted password: {0}".format(encrypt_password))
+                save_option = input("Do you want to save the password to a file? (yes/no): ").strip().lower()
+            
+            if save_option == 'yes' or save_option == 'sim':
+                save_password_to_file(password_confered)
+                if language == 1:
+                    print("Sua senha foi salva em um arquivo.")
+                if language == 2:
+                    print("Password has been saved to file.")
         case 4:
             entrada_valida = True
             print()
-            password = input("Por favor, digite a senha criptografada (Please, enter the encrypted password): ")
-            key = input("Por favor, digite a chave de criptografia dentro de b' ' (Please, enter the encryption key inside b' '): ")
+            if language == 1:
+                password = input("Por favor, digite a senha criptografada: ")
+                key = input("Por favor, digite a chave de criptografia dentro de b': '" )
+            if language == 2:
+                password = input("Please, enter the encrypted password: ")
+                key = input("Please, enter the encryption key inside b' ': ")
+            
             decrypt_password = decrypt(password, key)
             print()
-            print("Password: {0}".format(decrypt_password))
+            if language == 1:
+                print("Senha: {0}".format(decrypt_password))
+            if language == 2:
+                print("Password: {0}".format(decrypt_password))
         case 5:
             entrada_valida = True
-            password = input("Por favor, digite a senha (Please, enter the password): ")
-            key = input("Por favor, digite a chave de criptografia dentro de b' ' (Please, enter the encryption key inside b' '): ")
+            if language == 1:
+                password = input("Por favor, digite a senha criptografada: ")
+                key = input("Por favor, digite a chave de criptografia dentro de b': '" )
+            if language == 2:
+                password = input("Please, enter the encrypted password: ")
+                key = input("Please, enter the encryption key inside b' ': ")
             encrypt_password = encrypt(password, key)
-            print("Senha criptografada (Encrypted password): {0}".format(encrypt_password))
-            save_option = input("Do you want to save the encrypted password to a file? (yes/no): ").strip().lower()
-            if save_option == 'yes':
-                save_password_to_file(encrypt_password)
-                print("Encrypted password has been saved to file.")
+            if language == 1:
+                print("Senha criptografada: {0}".format(encrypt_password))
+                save_option = input("Você deseja salvar essa senha em um arquivo? (sim/nao): ").strip().lower()
+            if language == 2:
+                print("Encrypted password: {0}".format(encrypt_password))
+                save_option = input("Do you want to save the password to a file? (yes/no): ").strip().lower()
+            if save_option == 'yes' or save_option == 'sim':
+                save_password_to_file(password_confered)
+                if language == 1:
+                    print("Sua senha foi salva em um arquivo.")
+                if language == 2:
+                    print("Password has been saved to file.")
         case _:
-            print("Português: Entrada inválida. Por favor, digite 1, 2, 3, 4 ou 5 para uma entrada válida.")
-            print("English: Invalid input. Please, enter 1, 2, 3, 4 or 5 for a valid input.")
-            user_input = int(input("Escolha uma opção (1/2/3/4/5): "))
+            if language == 1:
+                print("Português: Entrada inválida. Por favor, digite 1, 2, 3, 4 ou 5 para uma entrada válida.")
+                user_input = int(input("Escolha uma opção (1/2/3/4/5): "))
+            if language == 2:
+                print("English: Invalid input. Please, enter 1, 2, 3, 4 or 5 for a valid input.")
+                user_input = int(input("Choose an option (1/2/3/4/5): "))
