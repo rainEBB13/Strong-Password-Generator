@@ -16,7 +16,6 @@ def creating_a_password(size_of_strength_password):
             password += random_generator.choice(symbols)
     return password
 
-
 def confering_strong_password(password, size_of_strength_password):
     while True:
         ok1 = False
@@ -24,7 +23,7 @@ def confering_strong_password(password, size_of_strength_password):
                 and any(numbers for k in password)
                 and any(symbols for k in password)):
             ok1 = True
-    
+
         size_of_password = len(password)
         character = {
             "lower_letter": 0, 
@@ -44,7 +43,7 @@ def confering_strong_password(password, size_of_strength_password):
                 character["numbers"] += 1
             elif i in symbols:
                 character["symbols"] += 1
-    
+
         ok2 = False
         if ((character["lower_letter"] >= min_distribution
                     and character["lower_letter"] <= max_distribution)
@@ -55,14 +54,13 @@ def confering_strong_password(password, size_of_strength_password):
                         and (character["symbols"] >= min_distribution
                             and character["symbols"] <= max_distribution)):
                     ok2 = True
-    
+
         if ok1 and ok2:
             break
 
         password = creating_a_password(size_of_strength_password)
 
     return password
-
 
 def confering_the_strength(password):
     size_of_password = len(password)
@@ -84,7 +82,7 @@ def confering_the_strength(password):
             character["numbers"] += 1
         elif i in symbols:
             character["symbols"] += 1
-    
+
     if size_of_password < 8:
         return 1
     elif size_of_password >= 8 and size_of_password < 10:
@@ -132,11 +130,9 @@ def confering_the_strength(password):
         else:
             return 2
 
-
 def create_key():
     key = Fernet.generate_key()
     return key
-
 
 def encrypt(password, key):
     password = password.encode()
@@ -144,12 +140,15 @@ def encrypt(password, key):
     encrypt_password = encrypt_password.decode()
     return encrypt_password
 
-
 def decrypt(password, key):
     password = password.encode()
     decrypt_password = Fernet(key).decrypt(password)
     decrypt_password = decrypt_password.decode()
     return decrypt_password
+
+def save_password_to_file(password, filename="passwords.txt"):
+    with open(filename, "a") as file:
+        file.write(password + "\n")
 
 # MAIN FUNCTION
 # Language selection menu
@@ -222,6 +221,10 @@ while not entrada_valida:
             password = creating_a_password(size_of_strength_password)
             password_confered = confering_strong_password(password, size_of_strength_password)
             print("A senha forte criada é (The strong password created is): {0}".format(password_confered))
+            save_option = input("Do you want to save the password to a file? (yes/no): ").strip().lower()
+            if save_option == 'yes':
+                save_password_to_file(password_confered)
+                print("Password has been saved to file.")
         case 3:
             entrada_valida = True
             print()
@@ -240,6 +243,10 @@ while not entrada_valida:
             print("Key: {0}".format(key))
             encrypt_password = encrypt(password, key)
             print("Senha criptografada (Encrypted password): {0}".format(encrypt_password))
+            save_option = input("Do you want to save the encrypted password to a file? (yes/no): ").strip().lower()
+            if save_option == 'yes':
+                save_password_to_file(encrypt_password)
+                print("Encrypted password has been saved to file.")
         case 4:
             entrada_valida = True
             print()
@@ -254,9 +261,11 @@ while not entrada_valida:
             key = input("Por favor, digite a chave de criptografia dentro de b' ' (Please, enter the encryption key inside b' '): ")
             encrypt_password = encrypt(password, key)
             print("Senha criptografada (Encrypted password): {0}".format(encrypt_password))
+            save_option = input("Do you want to save the encrypted password to a file? (yes/no): ").strip().lower()
+            if save_option == 'yes':
+                save_password_to_file(encrypt_password)
+                print("Encrypted password has been saved to file.")
         case _:
             print("Português: Entrada inválida. Por favor, digite 1, 2, 3, 4 ou 5 para uma entrada válida.")
             print("English: Invalid input. Please, enter 1, 2, 3, 4 or 5 for a valid input.")
             user_input = int(input("Escolha uma opção (1/2/3/4/5): "))
-
-#--------------------------------------------------------------------------
