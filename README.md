@@ -8,7 +8,7 @@ O trabalho foi desenvolvido nas férias do ano de 2024/2025. Eu fiz ele com o in
 Python como **secrets** e **cryptography**. Ademais, ele consiste basicamente em um projeto que envolve senhas e criptografia de modo a deixar a conta dos usuários que
 o utilizam cada vez mais segura.
 
-***Arquivo "Comments.txt":***
+***Arquivo "Comments.txt":*** 
 
 Esse arquivo consiste na tradução para a língua inglesa dos comentários contidos no meu programa principal: **"Generator.py"**, os quais eu achei que deixariam o programa
 confuso se fossem colocados juntos com os comentários dentro do projeto que estão na língua portuguesa.
