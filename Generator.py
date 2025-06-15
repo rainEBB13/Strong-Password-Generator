@@ -355,13 +355,13 @@ while not entrada_valida:
         case 5:
             entrada_valida = True
             if language == 1:
-                password = input("Por favor, digite a senha criptografada: ")
+                password = input("Por favor, digite a senha criptografada: ") # Solve meaning error: password = input("Por favor, digite a senha que vai ser criptografada: ")
                 key = input("Por favor, digite a chave de criptografia dentro de b': '" )
             if language == 2:
-                password = input("Please, enter the encrypted password: ")
+                password = input("Please, enter the encrypted password: ") # Solve meaning error: password = input("Please, enter the password to be encripted"): ")
                 key = input("Please, enter the encryption key inside b' ': ")
             if language == 3:
-                password = input("Porfavor, introduzca la contraseña cifrada: ")
+                password = input("Porfavor, introduzca la contraseña que va ser cifrada: ")
                 key = input("Porfavor, introduzca la llave de cifrado dentro de b' ': ")  
             encrypt_password = encrypt(password, key)
             if language == 1:
@@ -374,7 +374,7 @@ while not entrada_valida:
                 print("Contraseña encriptada: {0}".format(encrypt_password))
                 save_option = input("Quieres guarda la contraseña en un archivo? (si/no): ").strip().lower()
             if save_option == 'yes' or save_option == 'sim' or save_option == 'si':            
-                save_password_to_file(password_confered)
+                save_password_to_file(password_confered) # fix bug: save_password_to_file(password)
                 if language == 1:
                     print("Sua senha foi salva em um arquivo.")
                 if language == 2:
