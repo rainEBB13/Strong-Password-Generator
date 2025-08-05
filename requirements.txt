@@ -1,0 +1,13 @@
+# Core dependencies for password generation and encryption
+cryptography>=41.0.0
+
+# Note: The following are built-in Python libraries and don't need to be installed:
+# - os (built-in)
+# - secrets (built-in, Python 3.6+)
+# - string (built-in)
+
+# Development dependencies (uncomment if adding these features):
+# pytest>=7.0.0          # For unit testing
+# black>=23.0.0          # Code formatting
+# flake8>=6.0.0          # Code linting
+# bandit>=1.7.0          # Security analysis
